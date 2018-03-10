@@ -39,5 +39,4 @@ if __name__ == '__main__':
     get_content(url)
     print("......开始保存文件......")
     save_file()
-    print(url)
     print("......文件获取成功！......")
