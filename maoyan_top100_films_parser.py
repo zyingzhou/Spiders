@@ -15,7 +15,7 @@ def get_html_page(url):
     except RequestException:
         print('爬取失败！')
 #解析网页并保存数据
-def html_page_paser(html):
+def html_page_parser(html):
     soup = BeautifulSoup(html,'html5lib')
     for dd_tag in soup.find_all('dd'):
         items = []   #创建一个列表来存储数据
@@ -32,7 +32,7 @@ def main():
         i = i * 10
         url = "http://maoyan.com/board/4?offset=" + str(i)
         html = get_html_page(url)
-        html_page_paser(html)
+        html_page_parser(html)
 if __name__ == '__main__':
     #开始计算程序运行的时间
     p = Pool(10)
