@@ -6,6 +6,7 @@ import re
 from multiprocessing import Pool
 import time
 
+
 # 获取网页
 def get_Html_Page(url):
     try:
@@ -15,6 +16,8 @@ def get_Html_Page(url):
         return r.text
     except RequestException:
         print(RequestException)
+        
+        
 # 提取网页的图片的网址
 def parse_Html_Page(html):
     pattern1 = '<img width="220" height="282" class="err-product" data-img="1" src="//(.*?\.jpg)" />'
@@ -22,12 +25,16 @@ def parse_Html_Page(html):
     list = []
     list = re.findall(pattern1,html) + re.findall(pattern2,html)
     return list
+    
+    
 # 以页为单位下载图片并保存到本地
 def download(list,index):
     for i in range(len(list)):
         uri = "https://" + str(list[i])
         path = "D:\\Demos\\jingdong\\" + "第" + str(index) + "页" + str(i) +".jpg"
         urlretrieve(uri,filename=path)
+        
+        
 def main(index):
     # 构造网址
     url = "https://search.jd.com/Search?keyword=男装&enc=utf-8&qrst=1&rt=1&stop=1&vt=2&wq=男装&cid2=1342&page=" + \
@@ -39,6 +46,8 @@ def main(index):
     list = parse_Html_Page(html)
     download(list,index)
     print("第%s页获取成功！" % index)
+    
+    
 if __name__== '__main__':
     time.clock()
     p = Pool()
