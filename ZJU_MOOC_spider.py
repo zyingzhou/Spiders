@@ -88,14 +88,14 @@ def main():
     while j <= 42:
         # 微积分二是1-42
         if j <= 9:
-            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf_0' + str(i)
+            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf2_0' + str(i)
             path, uri = get_courses(url2)
             name = path.split('/')[-1]
             print("正在下载微积分二 {}".format(name))
             get_mp4(path, uri)
             print("微积分二 {}  获取完成！\n".format(name))
         else:
-            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf_' + str(i)
+            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf2_' + str(i)
             path, uri = get_courses(url2)
             name = path.split('/')[-1]
             print("正在下载微积分二 {}".format(name))
@@ -110,14 +110,14 @@ def main():
     while m <= 36:
         # 微积分三是1-36
         if j <= 9:
-            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf_0' + str(i)
+            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_0' + str(i)
             path, uri = get_courses(url2)
             name = path.split('/')[-1]
             print("正在下载微积分三 {}".format(name))
             get_mp4(path, uri)
             print("微积分三 {}  获取完成！\n".format(name))
         else:
-            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf_' + str(i)
+            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_' + str(i)
             path, uri = get_courses(url2)
             name = path.split('/')[-1]
             print("正在下载微积分三 {}".format(name))
