@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 # -*- coding: "UTF-8" -*-
 """
 Author: zhiying
@@ -58,8 +58,15 @@ def get_courses(url):
     soup = BeautifulSoup(r.text, 'html5lib')
     c_name = soup.find('div', {"class": "wenzinav"}).text.strip()
     name = c_name.split('>')[-1].strip()
+    # 文件路径,此方法有的文件名中会缺失第几节
+    # path = name.split(' ')[0] + '/' + name.split(' ')[-1]
     # 文件路径
-    path = name.split(' ')[0] + '/' + name.split(' ')[-1]
+    if 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf2_' in url:
+        path = name.split(' ')[0] + '/' + name.split('微积分二')[-1]
+    elif 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_' in url:
+        path = name.split(' ')[0] + '/' + name.split('微积分三')[-1]
+    else:
+        path = name.split(' ')[0] + '/' + name.split('微积分一')[-1]
     c_uri = soup.embed["src"].split(':')[-1]
     # 文件uri
     uri = c_uri.split('complete')[0] + '/vod/complete' + c_uri.split('complete')[-1]
@@ -69,6 +76,7 @@ def get_courses(url):
 def main():
     # 微积分一是1-90
     # url1 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf1'
+    # i =7 有问题，未下载。命名错误，名字中包含非法字符
     i = 1
     print("***************开始获取微积分一课程视频***************")
     while i <= 90:
@@ -88,14 +96,14 @@ def main():
     while j <= 42:
         # 微积分二是1-42
         if j <= 9:
-            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf2_0' + str(i)
+            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf2_0' + str(j)
             path, uri = get_courses(url2)
             name = path.split('/')[-1]
             print("正在下载微积分二 {}".format(name))
             get_mp4(path, uri)
             print("微积分二 {}  获取完成！\n".format(name))
         else:
-            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf2_' + str(i)
+            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf2_' + str(j)
             path, uri = get_courses(url2)
             name = path.split('/')[-1]
             print("正在下载微积分二 {}".format(name))
@@ -110,14 +118,14 @@ def main():
     while m <= 36:
         # 微积分三是1-36
         if j <= 9:
-            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_0' + str(i)
+            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_0' + str(m)
             path, uri = get_courses(url2)
             name = path.split('/')[-1]
             print("正在下载微积分三 {}".format(name))
             get_mp4(path, uri)
             print("微积分三 {}  获取完成！\n".format(name))
         else:
-            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_' + str(i)
+            url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_' + str(m)
             path, uri = get_courses(url2)
             name = path.split('/')[-1]
             print("正在下载微积分三 {}".format(name))
