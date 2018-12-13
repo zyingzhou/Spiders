@@ -117,7 +117,7 @@ def main():
     print("***************开始获取微积分三课程视频***************")
     while m <= 36:
         # 微积分三是1-36
-        if j <= 9:
+        if m <= 9:
             url2 = 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_0' + str(m)
             path, uri = get_courses(url2)
             name = path.split('/')[-1]
