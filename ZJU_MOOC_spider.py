@@ -65,8 +65,14 @@ def get_courses(url):
         path = name.split(' ')[0] + '/' + name.split('微积分二')[-1]
     elif 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_' in url:
         path = name.split(' ')[0] + '/' + name.split('微积分三')[-1]
+        if path == 'null/null' and url == 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_28':
+            path = "微积分三/第二十八节：斯托克斯公式"
+        if path == 'null/null' and url == 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_29':
+            path = "微积分三/第二十九节：空间第二类曲线积分与路径无关的四个等价条件及计算类型"
     else:
         path = name.split(' ')[0] + '/' + name.split('微积分一')[-1]
+        if url == 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf7'
+            path = "微积分一/第七节"
     c_uri = soup.embed["src"].split(':')[-1]
     # 文件uri
     uri = c_uri.split('complete')[0] + '/vod/complete' + c_uri.split('complete')[-1]
