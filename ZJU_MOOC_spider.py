@@ -65,6 +65,8 @@ def get_courses(url):
         path = name.split(' ')[0] + '/' + name.split('微积分二')[-1]
     elif 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_' in url:
         path = name.split(' ')[0] + '/' + name.split('微积分三')[-1]
+        if url == 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_22':
+            path = "微积分三/第二十二节:第二类曲面积分概念问题的引入和定义"
         if path == 'null/null' and url == 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_28':
             path = "微积分三/第二十八节：斯托克斯公式"
         if path == 'null/null' and url == 'http://metc.zju.edu.cn/mooc/link/wjf123.jsp?id=wjf3_29':
